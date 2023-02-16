@@ -1,0 +1,16 @@
+name: Merger
+
+on:
+  issue_comment:
+    type: created
+
+jobs:
+  pr_commented:
+    name: PR comment
+    if: ${{github.event.issue.pull_request && contains(github.event.comment.body, 'merge!')}}
+    runs-on: ubuntu-latest
+
+    steps:
+      - run: gh pr merge --merge "${{guthubg.event.issue.html_url}}"
+        env:
+          GH_TOKEN: ${{github.token}}

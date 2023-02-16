@@ -11,6 +11,6 @@ jobs:
     runs-on: ubuntu-latest
 
     steps:
-      - run: gh pr merge --merge "${{guthubg.event.issue.html_url}}"
+      - run: gh pr merge --merge "${{github.event.issue.html_url}}"
         env:
           GH_TOKEN: ${{github.token}}
